@@ -13,6 +13,12 @@ class Sensor:
         self.min_temp_today = -500
         self.current_temp = -500
 
+        self.max_humidity = -500
+        self.min_humidity = -500
+        self.max_humidity_today = -500
+        self.min_humidity_today = -500
+        self.current_humidity = -500
+
     def set_name(self, name):
         self.name = name
 
@@ -28,3 +34,16 @@ class Sensor:
             self.max_temp_today = temp
         elif temp > self.max_temp_today or self.max_temp_today == -500:
             self.max_temp_today = temp
+
+    def set_humidity(self, humidity):
+        self.current_humidity = humidity
+        if humidity < self.min_humidity or self.min_humidity == -500:
+            self.min_humidity = humidity
+            self.min_humidity_today = humidity
+        elif humidity < self.min_humidity_today or self.min_humidity_today == -500:
+            self.min_humidity_today = humidity
+        elif humidity > self.max_humidity or self.max_humidity == -500:
+            self.max_humidity = humidity
+            self.max_humidity_today = humidity
+        elif humidity > self.max_humidity_today or self.max_humidity_today == -500:
+            self.max_humidity_today = humidity
